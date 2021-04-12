@@ -72,6 +72,6 @@ if __name__ == '__main__':
                          loc='center')
 
     plt.savefig('result.png',
-                dpi=150)
+                dpi=250)
 
     plt.show()
