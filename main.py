@@ -21,7 +21,7 @@ def sitemap_gen(link, link_key):
         logging.info('using iocp')
         el = windows_events.ProactorEventLoop()
         events.set_event_loop(el)
-    root_url = f'{link}'
+    root_url = link
     crawler(root_url, out_file=f'sitemap_{link_key}.xml')
 
 
@@ -44,7 +44,7 @@ if __name__ == '__main__':
         links[link_key]['time'] = format(stop_time - start_time, '.2f')
 
     '''
-    # Данный способ гораздо эффективнее, но при нем я не понимаю, какой использовать метод для подсчета времени _(^^)_-
+    # Данный способ гораздо эффективнее, но при нем я не понимаю, какой использовать метод для подсчета времени -_(^^)_-
     for link_key in links:
         proc = Process(target=sitemap_gen, args=(links[link_key]['link'], link_key))
         procs.append(proc)
