@@ -4,7 +4,6 @@ from asyncio import events, windows_events
 import matplotlib.pyplot as plt
 import sys
 import logging
-import time
 
 
 def create_links_dictionary():
