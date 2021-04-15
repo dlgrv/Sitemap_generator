@@ -6,13 +6,15 @@ import sys
 import logging
 import time
 
-links = {
-    'craw': {'link': 'http://crawler-test.com/', 'count_links': 0},
-    'goog': {'link': 'http://google.com/', 'count_links': 0},
-    'vk': {'link': 'https://vk.com/', 'count_links': 0},
-    #'yndx': {'link': 'https://yandex.ru/', 'count_links': 0},
-    'stckovrfl': {'link': 'https://stackoverflow.com/', 'count_links': 0}
-}
+
+def create_links_dictionary():
+    links = {}
+    with open("input.txt", "r") as file:
+        for line in file:
+            link = line.replace('\n', '')
+            key = link[:link.find('.')].partition('//')[2].replace('-', '_')
+            links.update({key: {'link': link, 'count_links': 0}})
+    return links
 
 
 def sitemap_gen(link, link_key):
@@ -32,6 +34,8 @@ def count_lines(filename, chunk_size=1<<13):
 
 
 if __name__ == '__main__':
+    links = create_links_dictionary()
+
     procs = []
     list_link_keys = links.keys()
     for link_key in links:
