@@ -29,7 +29,7 @@ def sitemap_gen(link, link_key):
 def count_lines(filename, chunk_size=1<<13):
     with open(filename, encoding="utf-8") as file:
         return sum(chunk.count('\n')
-                   for chunk in iter(lambda: file.read(chunk_size), ''))
+        for chunk in iter(lambda: file.read(chunk_size), ''))
 
 
 if __name__ == '__main__':
